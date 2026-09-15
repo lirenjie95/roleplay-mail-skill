@@ -1,5 +1,6 @@
 """scripts/config.py 的单元测试（纯标准库 unittest）。"""
 
+import json
 import os
 import sys
 import tempfile
@@ -131,6 +132,26 @@ class TestResolveAccount(unittest.TestCase):
     def test_no_enabled_raises(self):
         with self.assertRaises(RuntimeError):
             config.resolve_account({'defaultAccountId': '', 'accounts': []})
+
+
+class TestServiceConfigRoles(unittest.TestCase):
+    """校验 service.config.json 的角色库结构，防止改配置时手滑。"""
+
+    @classmethod
+    def setUpClass(cls):
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(os.path.join(root, 'service.config.json'), encoding='utf-8') as fh:
+            cls.service_config = json.load(fh)
+
+    def test_role_ids_unique(self):
+        ids = [r['id'] for r in self.service_config['roles']]
+        self.assertEqual(len(ids), len(set(ids)),
+                         'roles 里存在重复的 id：%s' % sorted({i for i in ids if ids.count(i) > 1}))
+
+    def test_roles_have_required_fields(self):
+        for role in self.service_config['roles']:
+            for field in ('id', 'name', 'persona'):
+                self.assertTrue(role.get(field), '角色缺少非空字段 %s：%r' % (field, role))
 
 
 if __name__ == '__main__':

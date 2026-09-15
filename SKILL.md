@@ -1,7 +1,7 @@
 ---
 name: roleplay-mail-skill
-description: 自包含的"角色扮演邮件值班"服务，agent 类型无关（Kimi Code、Claude Code、Codex、DeepSeek Harness、opencode 等任意支持 SKILL.md 标准的 coding agent 均可使用）：内置 IMAP/SMTP 收发脚本（纯 Python 3 标准库），轮询指定发件人发来的、标题含「【LLM服务请求】」的未读邮件，下载附件到项目 .agent/downloads，以配置的角色人格（技术专家、日本牛郎、科比、张雪峰、东北雨姐、领导、算命大师、秘书、丁真、姜萍）执行正文任务并回信，产出文件作为附件回传。全程不询问用户，有疑问直接回信提问。当用户要求检查/处理服务请求邮件、跑邮件值班服务，或单纯收发邮件时使用。
-version: 4.0.0
+description: 自包含的"角色扮演邮件值班"服务，agent 类型无关（Kimi Code、Claude Code、Codex、DeepSeek Harness、opencode 等任意支持 SKILL.md 标准的 coding agent 均可使用）：内置 IMAP/SMTP 收发脚本（纯 Python 3 标准库），轮询指定发件人发来的、标题含「【LLM服务请求】」的未读邮件，下载附件到项目 .agent/downloads，以配置的角色人格（技术专家、日本牛郎、领导、算命大师、秘书、科比、张雪峰、东北雨姐、丁真、姜萍）执行正文任务并回信，产出文件作为附件回传。全程不询问用户，有疑问直接回信提问。当用户要求检查/处理服务请求邮件、跑邮件值班服务，或单纯收发邮件时使用。
+version: 4.1.0
 ---
 
 # Roleplay Mail Skill（自包含版）

@@ -5,14 +5,18 @@ on: [push, pull_request]
 jobs:
   unittest:
     runs-on: ${{ matrix.os }}
+    env:
+      # Windows runner 的 stdio 默认 cp1252，打印中文会 UnicodeEncodeError；
+      # UTF-8 模式让所有平台行为一致（Linux/macOS 下无影响）。
+      PYTHONUTF8: "1"
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.9', '3.12']
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - name: 语法检查
