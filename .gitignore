@@ -1,0 +1,13 @@
+# 密钥/本机配置
+.env
+accounts.json
+
+# 下载的附件/产物
+.agent/downloads/
+.claude/downloads/
+
+# python
+__pycache__/
+*.pyc
+.coverage
+htmlcov/

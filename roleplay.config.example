@@ -1,0 +1,6 @@
+{
+  "watchFrom": "boss@intranet.local",
+  "role": "日本牛郎",
+  "pollIntervalMinutes": 30
+}
+
