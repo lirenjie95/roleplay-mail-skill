@@ -101,10 +101,17 @@ SMTP_FROM=your@email.com
 }
 ```
 
-- `watchFrom`：只处理这个发件人的邮件（必填）。
-- `role`：本项目固定角色（可省，由邮件标题 `【LLM服务请求】<角色名>` 指定）。
+- `watchFrom`：只处理这个发件人的邮件；缺省 = 不过滤发件人，监控所有人
+  发来的请求邮件。
+- `role`：本项目固定角色（可省，由邮件标题 `【LLM服务请求】<角色名>` 指定），
+  去全局 `roles` 角色库里匹配 `name` 或 `aliases`。
 - `pollIntervalMinutes`：本项目值班轮询间隔（分钟，覆盖全局配置），
   如 `30` 表示让 agent 每 30 分钟检查一次新邮件；`0` 或缺省 = 不自动轮询。
+- `subjectKeyword`：本项目监控的标题关键字（覆盖全局配置），不同项目可用
+  不同关键字，互不干扰。
+
+项目配置里写了的字段都覆盖全局配置的同名字段（`roles` 角色库除外，
+只在全局维护）；没写的用全局配置。
 
 查找顺序：`.agent/roleplay.config` → `.claude/roleplay.config`（兼容旧部署）
 → `roleplay.config`。

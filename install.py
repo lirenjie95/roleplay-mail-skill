@@ -206,7 +206,7 @@ def main():
     print('  1. 编辑 %s ，填入你的邮箱配置' % os.path.join(SKILL_DIR, '.env'))
     print('  2. 在需要值班的项目里，把 %s'
           % os.path.join(SKILL_DIR, 'roleplay.config.example'))
-    print('     复制为 .agent/roleplay.config，填好 watchFrom 和 role')
+    print('     复制为 .agent/roleplay.config，按需填 watchFrom（缺省监控所有人）和 role')
     print('  3. 让你的 agent 使用 roleplay-mail-skill 这个 skill 即可')
     if installed:
         print()
